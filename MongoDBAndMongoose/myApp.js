@@ -166,11 +166,12 @@ Person.findOne({favoriteFoods: food}, (err, match)=>{
 // using `Model.findById() -> Person`.
 // Use the function argument 'personId' as search key.
 
-var findPersonById = function(personId, done) {
-  
-  done(null/*, data*/);
-  
-};
+const findPersonById = function(personId, done) {
+  Person.findOne({_id: personId}, (err, match)=>{
+     if (err) return console.log(err);
+     done(null, match);
+   })
+ };
 
 /** # CR[U]D part III - UPDATE # 
 /*  ============================ */
